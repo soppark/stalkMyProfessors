@@ -111,6 +111,6 @@ public class Prof implements ProfInterest {
 
     @Override
     public String toString() {
-        return name + " (" + dept + ") — " + papers.size() + " papers";
+        return name + " (" + dept + ") - " + papers.size() + " papers";
     }
 }
