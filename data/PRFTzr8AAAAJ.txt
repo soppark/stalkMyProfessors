@@ -1,0 +1,8 @@
+ID=PRFTzr8AAAAJ
+NAME=Franklin Marsh
+AFFILIATION=Pomona College
+DEPARTMENTS=Astrophysics
+EMAIL=@mymail.pomona.edu
+WEBSITE=
+INTERESTS=Astrophysics
+PAPER=Characterization of 9380 contact binaries from the CRTS Variable Sources Catalogue|2017|Monthly Notices of the Royal Astronomical Society 465 (4), 4678-4689, 2017
