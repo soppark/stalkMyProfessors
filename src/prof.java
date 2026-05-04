@@ -30,10 +30,11 @@ public class Prof implements ProfInterest {
     }
 
 
-    public void addPaper(String[] parts) {
-        String title = parts[6];
-        String year = parts[7];
-        String venue = parts[8];
+    public void addPaper(String line){
+        String[] parts=line.split(",");
+        String title=parts[6];
+        String year=parts[7];
+        String venue=parts[8];
 
         papers.add(new Paper(title, year, venue));
     }
