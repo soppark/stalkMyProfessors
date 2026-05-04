@@ -26,15 +26,16 @@ public class Prof implements ProfInterest {
             }
         }
 
-        this.papers = new ArrayList<>();
+        this.papers=new ArrayList<>();
     }
 
 
     public void addPaper(String line){
         String[] parts=line.split(",");
-        String title=parts[6];
-        String year=parts[7];
-        String venue=parts[8];
+        String title=""; String year=""; String venue="";
+        if(parts.length>6) title=parts[6];
+        if(parts.length>7) title=parts[7];
+        if(parts.length>8) title=parts[8];
 
         papers.add(new Paper(title, year, venue));
     }

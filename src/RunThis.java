@@ -5,13 +5,14 @@ import java.util.HashMap;
 
 public class RunThis {
     
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException{
         String data="data/all_output.csv";
         BufferedReader reader=new BufferedReader(new FileReader(data));
         String line=reader.readLine();
 
+        int i=0;
         HashMap<String,Prof> map=new HashMap<>();
-        while(line!=null){
+        while(line!=null & i++<=1000){
             String key=line.split(",")[0];
             if (!map.containsKey(key)) {
                 Prof p=new Prof(line);
@@ -20,10 +21,11 @@ public class RunThis {
             } else {
                 map.get(key).addPaper(line);
             }
+            line=reader.readLine();
         }
         reader.close();
-        System.out.println(map.values());
-
-    
+        for(Prof p:map.values()){
+            System.out.println(p.toString());    
+        }
     }
 }
