@@ -1,11 +1,11 @@
 public class Paper {
-    String title;
-    int year;
-    String source;
+    private String title;
+    private String year;
+    private String venue;
 
-    public Paper(String title, int year, String source) {
+    public Paper(String title, String year, String venue) {
         this.title = title;
         this.year = year;
-        this.source = source;
+        this.venue = venue;
     }
 }

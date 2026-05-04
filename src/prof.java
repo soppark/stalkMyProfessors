@@ -1,4 +1,3 @@
-import java.io.*;
 import java.util.*;
 
 public class Prof implements ProfInterest {
@@ -11,68 +10,39 @@ public class Prof implements ProfInterest {
     ArrayList<String> academicInterests;
     ArrayList<Paper> papers;
 
-    public Prof(File data) {
-        academicInterests = new ArrayList<>();
-        papers = new ArrayList<>();
-        id = "";
-        name = "";
-        affiliation = "";
-        dept = "";
-        email = "";
-        website = "";
+    public Prof(String line) {
+        String[] parts=line.split(",");
+        this.name=parts[0];
+        this.affiliation=parts[1];
+        this.dept=parts[2];
+        this.email=parts[3];
+        this.website=parts[4];
 
-        try (BufferedReader br = new BufferedReader(new FileReader(data))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                if (line.startsWith("ID=")) {
-                    id = line.substring(3);
-                } else if (line.startsWith("NAME=")) {
-                    name = line.substring(5);
-                } else if (line.startsWith("AFFILIATION=")) {
-                    affiliation = line.substring(12);
-                } else if (line.startsWith("DEPARTMENTS=")) {
-                    dept = line.substring(12);
-                } else if (line.startsWith("EMAIL=")) {
-                    email = line.substring(6);
-                } else if (line.startsWith("WEBSITE=")) {
-                    website = line.substring(8);
-                } else if (line.startsWith("INTERESTS=")) {
-                    String raw = line.substring(10);
-                    if (!raw.isEmpty()) {
-                        String[] parts = raw.split(";");
-                        for (String part : parts) {
-                            String trimmed = part.trim();
-                            if (!trimmed.isEmpty()) {
-                                academicInterests.add(trimmed);
-                            }
-                        }
-                    }
-                } else if (line.startsWith("PAPER=")) {
-                    String raw = line.substring(6);
-                    String[] parts = raw.split("\\|", 3);
-                    String title = parts.length > 0 ? parts[0] : "";
-                    int year = 0;
-                    if (parts.length > 1) {
-                        try {
-                            year = Integer.parseInt(parts[1].trim());
-                        } catch (NumberFormatException e) {
-                            year = 0;
-                        }
-                    }
-                    String source = parts.length > 2 ? parts[2] : "";
-                    papers.add(new Paper(title, year, source));
-                }
+        this.academicInterests=new ArrayList<>();
+        if (!parts[5].isEmpty()) {
+            String[] interests=parts[5].split(";");
+            for (String s: interests) {
+                academicInterests.add(s.trim());
             }
-        } catch (IOException e) {
-            System.err.println("Error reading file: " + data.getName() + " — " + e.getMessage());
         }
+
+        this.papers = new ArrayList<>();
+    }
+
+
+    public void addPaper(String[] parts) {
+        String title = parts[6];
+        String year = parts[7];
+        String venue = parts[8];
+
+        papers.add(new Paper(title, year, venue));
     }
 
     @Override
     public String getName() {
         return name;
     }
-
+    
     @Override
     public String getDepartment() {
         return dept;
