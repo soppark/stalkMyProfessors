@@ -1,11 +1,11 @@
 import java.util.*;
 
-public interface ProfInterest extends Comparable<ProfInterest> {
+public interface ProfInterface extends Comparable<ProfInterface> {
     String getName();
     String getDepartment();
     String getID();
     List<String> getAcademicInterests();
 
     @Override
-    int compareTo(ProfInterest other);
+    int compareTo(ProfInterface other);
 }

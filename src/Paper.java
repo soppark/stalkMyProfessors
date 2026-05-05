@@ -11,6 +11,6 @@ public class Paper {
 
     @Override
     public String toString(){
-        return "Title: "+title+" year: "+year+" venue: "+venue;
+        return "Title: "+title+", Year: "+year+", Venue: "+venue;
     }
 }

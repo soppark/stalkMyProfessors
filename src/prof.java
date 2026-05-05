@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Prof implements ProfInterest {
+public class Prof implements ProfInterface{
     private String id;
     private final String name;
     private final String affiliation;
@@ -12,6 +12,10 @@ public class Prof implements ProfInterest {
 
     public Prof(String line) {
         String[] parts=line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+        // for(String s:parts){
+        //     System.out.println(s);
+        // }
+        // System.out.println("------------");
         this.name=parts[0];
         this.affiliation=parts[1];
         this.dept=parts[2];
@@ -31,14 +35,13 @@ public class Prof implements ProfInterest {
 
 
     public void addPaper(String line){
-        String[] parts=line.split(",");
+        String[] parts=line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
         String title=""; String year=""; String venue="";
         if(parts.length>6) title=parts[6];
         if(parts.length>7) year=parts[7];
         if(parts.length>8) venue=parts[8];
 
         papers.add(new Paper(title, year, venue));
-        //have some slicing issue in format, quotation marks
     }
 
     @Override
@@ -78,7 +81,7 @@ public class Prof implements ProfInterest {
     }
 
     @Override
-    public int compareTo(ProfInterest other) {
+    public int compareTo(ProfInterface other) {
         return this.name.compareToIgnoreCase(other.getName());
     }
 
@@ -98,6 +101,7 @@ public class Prof implements ProfInterest {
         for(String interest:academicInterests){
             out+=interest+"\n";
         }
+        out+="---------------\n";
         out+="Past Papers: \n";
         for(Paper p:papers){
             out+=p.toString()+"\n";
