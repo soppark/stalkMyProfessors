@@ -4,25 +4,26 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class ProfList{
-    private HashMap<String,Prof> map;
+    private final HashMap<String,Prof> map;
+
     public ProfList(String data) throws IOException{
         map=new HashMap<>();
-        BufferedReader reader=new BufferedReader(new FileReader(data));
-        String line=reader.readLine();
-
-        int i=0;
-        while(line!=null & i++<=3000){
-            String key=line.split(",")[0];
-            if (!map.containsKey(key)) {
-                Prof p=new Prof(line);
-                p.addPaper(line);
-                map.put(key, p);
-            } else {
-                map.get(key).addPaper(line);
+        try (BufferedReader reader = new BufferedReader(new FileReader(data))) {
+            String line=reader.readLine();
+            
+            int i=0;
+            while(line!=null & i++<=3000){
+                String key=line.split(",")[0];
+                if (!map.containsKey(key)) {
+                    Prof p=new Prof(line);
+                    p.addPaper(line);
+                    map.put(key, p);
+                } else {
+                    map.get(key).addPaper(line);
+                }
+                line=reader.readLine();
             }
-            line=reader.readLine();
         }
-        reader.close();
     }
 
     public HashMap<String,Prof> getHashMap(){

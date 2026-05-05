@@ -2,11 +2,11 @@ import java.util.*;
 
 public class Prof implements ProfInterest {
     private String id;
-    private String name;
-    private String affiliation;
-    private String dept;
-    private String email;
-    private String website;
+    private final String name;
+    private final String affiliation;
+    private final String dept;
+    private final String email;
+    private final String website;
     ArrayList<String> academicInterests;
     ArrayList<Paper> papers;
 
