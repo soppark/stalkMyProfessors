@@ -1,7 +1,7 @@
 public class Paper {
-    private String title;
-    private String year;
-    private String venue;
+    private final String title;
+    private final String year;
+    private final String venue;
 
     public Paper(String title, String year, String venue) {
         this.title = title;
