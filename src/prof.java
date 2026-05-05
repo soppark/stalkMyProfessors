@@ -11,7 +11,7 @@ public class Prof implements ProfInterest {
     ArrayList<Paper> papers;
 
     public Prof(String line) {
-        String[] parts=line.split(",");
+        String[] parts=line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
         this.name=parts[0];
         this.affiliation=parts[1];
         this.dept=parts[2];
@@ -34,10 +34,11 @@ public class Prof implements ProfInterest {
         String[] parts=line.split(",");
         String title=""; String year=""; String venue="";
         if(parts.length>6) title=parts[6];
-        if(parts.length>7) title=parts[7];
-        if(parts.length>8) title=parts[8];
+        if(parts.length>7) year=parts[7];
+        if(parts.length>8) venue=parts[8];
 
         papers.add(new Paper(title, year, venue));
+        //have some slicing issue in format, quotation marks
     }
 
     @Override
@@ -84,5 +85,23 @@ public class Prof implements ProfInterest {
     @Override
     public String toString() {
         return name + " (" + dept + ") - " + papers.size() + " papers";
+    }
+
+    public String toStringDetails(){
+        String out="";
+        out+="Name: "+name+"\n";
+        out+="Affiliation: "+affiliation+"\n";
+        out+="Department: "+dept+"\n";
+        out+="Email: "+email+"\n";
+        out+="Website: "+website+"\n";
+        out+="Academic Interestst: \n";
+        for(String interest:academicInterests){
+            out+=interest+"\n";
+        }
+        out+="Past Papers: \n";
+        for(Paper p:papers){
+            out+=p.toString()+"\n";
+        }
+        return out;
     }
 }

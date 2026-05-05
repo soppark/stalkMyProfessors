@@ -3,16 +3,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class RunThis {
-    
-    public static void main(String[] args) throws IOException{
-        String data="data/all_output.csv";
+public class ProfList{
+    private HashMap<String,Prof> map;
+    public ProfList(String data) throws IOException{
+        map=new HashMap<>();
         BufferedReader reader=new BufferedReader(new FileReader(data));
         String line=reader.readLine();
 
         int i=0;
-        HashMap<String,Prof> map=new HashMap<>();
-        while(line!=null & i++<=1000){
+        while(line!=null & i++<=3000){
             String key=line.split(",")[0];
             if (!map.containsKey(key)) {
                 Prof p=new Prof(line);
@@ -24,8 +23,23 @@ public class RunThis {
             line=reader.readLine();
         }
         reader.close();
+    }
+
+    public HashMap<String,Prof> getHashMap(){
+        return map;
+    }
+
+    @Override
+    public String toString(){
+        String out="";
         for(Prof p:map.values()){
-            System.out.println(p.toString());    
+            out+=p.toString()+"\n";
         }
+        return out;
+    }
+
+    public static void main(String[] args) throws IOException{
+        ProfList lst=new ProfList("data/all_output.csv");
+        System.out.print(lst);
     }
 }

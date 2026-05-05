@@ -8,4 +8,9 @@ public class Paper {
         this.year = year;
         this.venue = venue;
     }
+
+    @Override
+    public String toString(){
+        return "Title: "+title+" year: "+year+" venue: "+venue;
+    }
 }
