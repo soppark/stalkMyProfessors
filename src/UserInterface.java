@@ -12,6 +12,7 @@ public class UserInterface {
         }else{
             System.out.println("No prof with this name.");
         }
+        //Name has to be exact match with data base, not ideal
     }
 
     public static void getDept(Scanner scanner, HashMap<String,Prof> map) throws IOException{
@@ -19,7 +20,7 @@ public class UserInterface {
         String deptName=scanner.nextLine();
         ArrayList<Prof> lst=DeptFinder.getDept(deptName, map);
         for(Prof p:lst){
-            System.out.println(p.toStringDetails());
+            System.out.println(p.toString());
         }
         //HERE need comparison method with BST?
     }
@@ -37,13 +38,13 @@ public class UserInterface {
             HashMap<String,Prof> map=new ProfList(data).getHashMap();
 
             while (true) { 
-                System.out.print("Enter 1 to search Prof, 2 for Dept, 3 for graph");
+                System.out.print("--------------------------\nEnter 1 to search Prof, 2 for Dept, 3 for graph: ");
                 String c = scanner.nextLine();
                 if(c.equals("1")) getProf(scanner, map);
                 if(c.equals("2")) getDept(scanner, map);
                 if(c.equals("3")) getGraph(scanner, map);
                 
-                //Name has to be exact match with data base, not ideal
+                
             }
 
         }
