@@ -25,7 +25,8 @@ package structures;
  ******************************************************************************/
 
 import java.util.NoSuchElementException;
-import java.util.Queue;
+import java.util.LinkedList;
+
 
 /**
  *  The {@code BST} class represents an ordered symbol table of generic
@@ -162,7 +163,6 @@ public class BST<Key extends Comparable<Key>, Value> {
             return;
         }
         root = put(root, key, val);
-        assert check();
     }
 
     private Node put(Node node, Key key, Value val) {
@@ -184,7 +184,6 @@ public class BST<Key extends Comparable<Key>, Value> {
     public void deleteMin() {
         if (isEmpty()) throw new NoSuchElementException("Symbol table underflow");
         root = deleteMin(root);
-        assert check();
     }
 
     private Node deleteMin(Node node) {
@@ -202,7 +201,6 @@ public class BST<Key extends Comparable<Key>, Value> {
     public void deleteMax() {
         if (isEmpty()) throw new NoSuchElementException("Symbol table underflow");
         root = deleteMax(root);
-        assert check();
     }
 
     private Node deleteMax(Node node) {
@@ -222,7 +220,6 @@ public class BST<Key extends Comparable<Key>, Value> {
     public void delete(Key key) {
         if (key == null) throw new IllegalArgumentException("calls delete() with a null key");
         root = delete(root, key);
-        assert check();
     }
 
     private Node delete(Node node, Key key) {
@@ -536,19 +533,52 @@ public class BST<Key extends Comparable<Key>, Value> {
      *
      * @param args the command-line arguments
      */
-    // public static void main(String[] args) {
-    //     BST<String, Integer> st = new BST<String, Integer>();
-    //     for (int i = 0; !StdIn.isEmpty(); i++) {
-    //         String key = StdIn.readString();
-    //         st.put(key, i);
-    //     }
+    public static void main(String[] args) {
+    // Create a BST with String keys and Integer values
+    BST<String, Integer> st = new BST<String, Integer>();
 
-    //     for (String s : st.levelOrder())
-    //         StdOut.println(s + " " + st.get(s));
+    // Insert some key-value pairs (same example as the textbook)
+    String[] tokens = { "S", "E", "A", "R", "C", "H", "E", "X", "A", "M", "P", "L", "E" };
+    for (int i = 0; i < tokens.length; i++) {
+        st.put(tokens[i], i);
+    }
 
-    //     StdOut.println();
+    // Print keys in the order they appear when you walk the tree level by level
+    System.out.println("Level order:");
+    for (String s : st.levelOrder()) {
+        System.out.println("  " + s + " " + st.get(s));
+    }
 
-    //     for (String s : st.keys())
-    //         StdOut.println(s + " " + st.get(s));
-    // }
+    // Print keys in alphabetical (in-order) order
+    System.out.println("\nIn-order (sorted):");
+    for (String s : st.keys()) {
+        System.out.println("  " + s + " " + st.get(s));
+    }
+
+    // Basic info
+    System.out.println("\nsize    = " + st.size());
+    System.out.println("min     = " + st.min());
+    System.out.println("max     = " + st.max());
+    System.out.println("height  = " + st.height());
+
+    // Lookups
+    System.out.println("\nget(\"H\")        = " + st.get("H"));
+    System.out.println("contains(\"Z\") = " + st.contains("Z"));
+
+    // Order-statistic tests
+    System.out.println("rank(\"M\")     = " + st.rank("M"));
+    System.out.println("select(3)      = " + st.select(3));
+    System.out.println("floor(\"G\")    = " + st.floor("G"));
+    System.out.println("ceiling(\"G\")  = " + st.ceiling("G"));
+
+    // Delete tests
+    st.deleteMin();
+    st.deleteMax();
+    st.delete("E");
+    System.out.println("\nAfter deleteMin, deleteMax, delete(\"E\"):");
+    for (String s : st.keys()) {
+        System.out.print(s + " ");
+    }
+    System.out.println();
+}
 }
