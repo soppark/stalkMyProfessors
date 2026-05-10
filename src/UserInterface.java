@@ -27,6 +27,7 @@ public class UserInterface {
         System.out.print("Enter the department you'd like to learn more about: ");
         String deptName=scanner.nextLine();
         ArrayList<Prof> lst=DeptFinder.getDept(deptName, map); //gives all prof in the dept
+        if(lst.isEmpty()) System.out.println("No Dept Find");
         BST<Integer,Prof> bst=new BST<Integer,Prof>();
         for(Prof p:lst){
             bst.put(p.getPaperNum(),p);
@@ -35,7 +36,6 @@ public class UserInterface {
             System.out.println(bst.get(bst.max()).toString());
             bst.deleteMax();
         }
-        //HERE need comparison method with BST?
     }
 
     public static void getGraph(Scanner scanner, HashMap<String,Prof> map) throws IOException{
