@@ -5,7 +5,4 @@ public interface ProfInterface extends Comparable<ProfInterface> {
     String getDepartment();
     String getID();
     List<String> getAcademicInterests();
-
-    @Override
-    int compareTo(ProfInterface other);
 }

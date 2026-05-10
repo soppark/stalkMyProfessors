@@ -7,6 +7,7 @@ public class Prof implements ProfInterface{
     private final String dept;
     private final String email;
     private final String website;
+    private int paperNum;
     ArrayList<String> academicInterests;
     ArrayList<Paper> papers;
 
@@ -31,6 +32,7 @@ public class Prof implements ProfInterface{
         }
 
         this.papers=new ArrayList<>();
+        this.paperNum=0;
     }
 
 
@@ -42,6 +44,7 @@ public class Prof implements ProfInterface{
         if(parts.length>8) venue=parts[8];
 
         papers.add(new Paper(title, year, venue));
+        paperNum++;
     }
 
     @Override
@@ -80,9 +83,12 @@ public class Prof implements ProfInterface{
         return papers;
     }
 
-    @Override
-    public int compareTo(ProfInterface other) {
-        return this.name.compareToIgnoreCase(other.getName());
+    public int getPaperNum(){
+        return paperNum;
+    }
+
+    public int compareTo(Prof other) {
+        return this.paperNum-other.getPaperNum();
     }
 
     @Override
@@ -102,7 +108,7 @@ public class Prof implements ProfInterface{
             out+=interest+"\n";
         }
         out+="---------------\n";
-        out+="Past Papers: \n";
+        out+=paperNum+" Past Papers Found: \n";
         for(Paper p:papers){
             out+=p.toString()+"\n";
         }
