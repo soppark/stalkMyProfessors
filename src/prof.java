@@ -10,6 +10,7 @@ public class Prof implements ProfInterface{
     private int paperNum;
     ArrayList<String> academicInterests;
     ArrayList<Paper> papers;
+    ArrayList<String> coauthors;
 
     public Prof(String line) {
         String[] parts=line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
@@ -33,6 +34,7 @@ public class Prof implements ProfInterface{
 
         this.papers=new ArrayList<>();
         this.paperNum=0;
+        this.coauthors=new ArrayList<>();
     }
 
 
@@ -42,9 +44,15 @@ public class Prof implements ProfInterface{
         if(parts.length>6) title=parts[6];
         if(parts.length>7) year=parts[7];
         if(parts.length>8) venue=parts[8];
-
+        
         papers.add(new Paper(title, year, venue));
         paperNum++;
+
+        int i=9;
+        while(i<parts.length){
+            if(!coauthors.contains(parts[i])) coauthors.add(parts[i]);
+            i++;
+        }
     }
 
     @Override
@@ -85,6 +93,10 @@ public class Prof implements ProfInterface{
 
     public int getPaperNum(){
         return paperNum;
+    }
+    
+    public ArrayList<String> getCoauthors(){
+        return coauthors;
     }
 
     public int compareTo(Prof other) {

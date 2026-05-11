@@ -89,7 +89,15 @@ public class UserInterface {
     public static void getGraph(Scanner scanner, HashMap<String,Prof> map) throws IOException{
         System.out.print("Enter the prof you'd like to see connections of: ");
         String profName=scanner.nextLine();
-        
+        ArrayList<String> co;
+
+        //check if the name is in the map
+        if(map.containsKey(profName)){
+            co=map.get(profName).getCoauthors();
+            
+        }else{
+            System.out.println("No prof with this name.");
+        }
         //HERE need graph
     }
 
