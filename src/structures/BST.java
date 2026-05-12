@@ -3,19 +3,29 @@ import java.util.NoSuchElementException;
 
 
 /**
- * Binary Search Tree used by this project to sort professors by a
- * comparable key, such as paper count.
+ * Binary Search Tree implementation:
+ * In this project, the BST is used mainly to store key-value pairs in sorted
+ * order. For example, we use professor paper counts as keys so professors can
+ * be printed from most papers to fewest papers.
  *
- * This class keeps only the operations currently needed by the app:
- * insert/update a key-value pair, look up a value, find the largest key,
- * delete the largest key, check whether the tree is empty, and get its size.
+ * Keys must implement Comparable so the tree can decide whether to move left
+ * or right while searching, inserting, or deleting. Smaller keys are stored in
+ * the left subtree, and larger keys are stored in the right subtree.
  *
- * The tree is not balanced, so operations are O(h), where h is the tree height.
- * In the worst case, h can be n.
+ * This is an unbalanced BST, so operations such as put, get, max, and deleteMax
+ * take O(h) time, where h is the height of the tree. In the worst case, h can be n.
+ * 
+ * Original authors:
+ * Robert Sedgewick
+ * Kevin Wayne
  *
- * @param <Key> a comparable key used for sorting
- * @param <Value> the data stored with each key
+ * Adapted by:
+ * Max Liu, Joshua Oyadomari-Chun, Sophie Park, and Fred Wang
+ *
+ * @param <Key> the comparable key used to sort entries
+ * @param <Value> the value associated with each key
  */
+
 public class BST<Key extends Comparable<Key>, Value> {
     private Node root;             // root of BST
 
