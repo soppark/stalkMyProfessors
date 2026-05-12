@@ -28,8 +28,8 @@ NAME_RE = re.compile(r"^[A-Z][A-Za-zÀ-ÖØ-öø-ÿ.'() -]+$")
 def add_coauthors(
     input_path: str,
     output_path: str,
-    min_coauthors: int = 1,
-    max_coauthors: int = 3,
+    min_coauthors: int = 0,
+    max_coauthors: int = 1,
     seed: int | None = None,
 ) -> list[dict[str, str]]:
     if seed is not None:
@@ -117,10 +117,10 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--input", default=default_in, help="Input CSV path")
     ap.add_argument("--output", default=default_out, help="Output CSV path")
-    ap.add_argument("--min", type=int, default=1, dest="min_coauthors",
-                    help="Minimum coauthors per paper (default: 1)")
-    ap.add_argument("--max", type=int, default=3, dest="max_coauthors",
-                    help="Maximum coauthors per paper (default: 3)")
+    ap.add_argument("--min", type=int, default=0, dest="min_coauthors",
+                    help="Minimum coauthors per paper (default: 0)")
+    ap.add_argument("--max", type=int, default=1, dest="max_coauthors",
+                    help="Maximum coauthors per paper (default: 1)")
     ap.add_argument("--seed", type=int, default=None,
                     help="Random seed for reproducibility (optional)")
     args = ap.parse_args()

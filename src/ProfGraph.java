@@ -12,11 +12,14 @@ public class ProfGraph {
 
         for(String author1:profNames){
             co=map.get(author1).getCoauthors();
+            //System.out.println("main author: "+author1);
             for(String author2:co){
                 int a1=profNames.indexOf(author1);
                 int a2=profNames.indexOf(author2);
+                //System.out.println("coauthor: "+author2);
                 graph.addEdge(a1,a2);
             }
+            //System.out.println("-----------------");
         }
         System.out.println(graph.toStringDetail(profNames));
     }

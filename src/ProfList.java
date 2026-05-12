@@ -26,10 +26,10 @@ public class ProfList{
         map=new HashMap<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(data))) {
             String line=reader.readLine();
-            
+            line=reader.readLine();
             int i=0;
-            while(line!=null & i++<=3000){
-                // first colum if the pro'f name - use it as the key
+            while(line!=null & i++<=3450){
+                // first colum if the prof name - use it as the key
                 String key=line.split(",")[0];
                 if (!map.containsKey(key)) {
                     // first time seeing the prof: make a new Prof and add the paper

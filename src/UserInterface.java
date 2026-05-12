@@ -89,9 +89,12 @@ public class UserInterface {
 
     public static void main(String[] args) throws IOException {
         try (Scanner scanner = new Scanner(System.in)) {
-            String data="data/all_output.csv";
+            String data1="data/all_output.csv";
+            String data="data/all_output_with_coauthors.csv";
             HashMap<String,Prof> map=new ProfList(data).getHashMap();
+            System.out.println(map.keySet().size());
             Graph graph=new Graph(map.keySet().size());
+    
 
             while (true) { 
                 System.out.print("--------------------------\nEnter 1 to search Prof, 2 for Dept, 3 for graph, 0 for prof list: ");

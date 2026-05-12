@@ -224,7 +224,7 @@ public class Graph {
         for (int v = 0; v < V; v++) {
             s.append("coauthors of "+names.get(v) + ": ");
             for (int w : adj[v]) {
-                s.append(names.get(w) + " ");
+                s.append(names.get(w) + ", ");
             }
             s.append(NEWLINE);
         }

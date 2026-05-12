@@ -50,7 +50,7 @@ public class Prof implements ProfInterface{
 
         int i=9;
         while(i<parts.length){
-            if(!coauthors.contains(parts[i])) coauthors.add(parts[i]);
+            if(!coauthors.contains(parts[i]) && !parts[i].equals("")) coauthors.add(parts[i]);
             i++;
         }
     }
