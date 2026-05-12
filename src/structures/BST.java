@@ -22,6 +22,7 @@ import java.util.NoSuchElementException;
  * Adapted by:
  * Max Liu, Joshua Oyadomari-Chun, Sophie Park, and Fred Wang
  *
+ * 
  * @param <Key> the comparable key used to sort entries
  * @param <Value> the value associated with each key
  */
