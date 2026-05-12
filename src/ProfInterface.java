@@ -4,7 +4,7 @@ import java.util.*;
  * ProfInterface - the interace that Prof has to implement
  * Extends Comparable so we cna sort profs against each other
  */
-public interface ProfInterface extends Comparable<ProfInterface> {
+public interface ProfInterface{
     /**
      * @return the prof's full name
      */
