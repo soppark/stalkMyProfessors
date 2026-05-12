@@ -1,48 +1,23 @@
-/******************************************************************************
- *  Compilation:  javac Graph.java
- *  Execution:    java Graph input.txt
- *  Dependencies: Bag.java Stack.java In.java StdOut.java
- *  Data files:   https://algs4.cs.princeton.edu/41graph/tinyG.txt
- *                https://algs4.cs.princeton.edu/41graph/mediumG.txt
- *                https://algs4.cs.princeton.edu/41graph/largeG.txt
- *
- *  A graph, implemented using an array of sets.
- *  Parallel edges and self-loops allowed.
- *
- ******************************************************************************/
-
 package structures;
 import java.util.*;
 
 /**
- *  The {@code Graph} class represents an undirected graph of vertices
- *  named 0 through <em>V</em> – 1.
- *  It supports the following two primary operations: add an edge to the graph,
- *  iterate over all of the vertices adjacent with a given vertex. It also provides
- *  methods for returning the degree of a vertex, the number of vertices
- *  <em>V</em> in the graph, and the number of edges <em>E</em> in the graph.
- *  Parallel edges and self-loops are permitted.
- *  By convention, a self-loop <em>v</em>-<em>v</em> appears in the
- *  adjacency list of <em>v</em> twice and contributes two to the degree
- *  of <em>v</em>.
- *  <p>
- *  This implementation uses an <em>adjacency-lists representation</em>, which
- *  is a vertex-indexed array of {@link Bag} objects.
- *  It uses &Theta;(<em>E</em> + <em>V</em>) space, where <em>E</em> is
- *  the number of edges and <em>V</em> is the number of vertices.
- *  All instance methods take &Theta;(1) time. (Though, iterating over
- *  the vertices returned by {@link #adj(int)} takes time proportional
- *  to the degree of the vertex.)
- *  Constructing an empty graph with <em>V</em> vertices takes
- *  &Theta;(<em>V</em>) time; constructing a graph with <em>E</em> edges
- *  and <em>V</em> vertices takes &Theta;(<em>E</em> + <em>V</em>) time.
- *  <p>
- *  For additional documentation, see
- *  <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>
- *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ * Undirected graph implementation 
  *
- *  @author Robert Sedgewick
- *  @author Kevin Wayne
+ * In this project, the graph represents professor coauthor relationships.
+ * Each vertex is a professor, and each edge represents a coauthorship between
+ * two professors.
+ *
+ * The graph uses an adjacency-list representation. Each vertex stores a Bag of
+ * neighboring vertex indexes. This keeps the graph compact and makes it easy to
+ * iterate through a professor's collaborators.
+ * 
+ * Original authors:
+ * Robert Sedgewick
+ * Kevin Wayne
+ *
+ * Adapted by:
+ * Max Liu, Joshua Oyadomari-Chun, Sophie Park, and Fred Wang
  */
 public class Graph {
     private static final String NEWLINE = System.getProperty("line.separator");
