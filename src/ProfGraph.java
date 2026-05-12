@@ -2,12 +2,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
-import structures.Graph;
+import structures.*;
 
 public class ProfGraph {
     public static void getGraph(Scanner scanner, HashMap<String,Prof> map, Graph graph) throws IOException{
         ArrayList<String> co;
-        ArrayList<String> profNames=(ArrayList<String>) map.keySet();
+        ArrayList<String> profNames=new ArrayList<>();
+        profNames.addAll(map.keySet());
 
         for(String author1:profNames){
             co=map.get(author1).getCoauthors();
@@ -17,5 +18,6 @@ public class ProfGraph {
                 graph.addEdge(a1,a2);
             }
         }
+        System.out.println(graph.toStringDetail(profNames));
     }
 }

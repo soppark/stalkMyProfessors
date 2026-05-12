@@ -86,25 +86,12 @@ public class UserInterface {
         }
     }
 
-    public static void getGraph(Scanner scanner, HashMap<String,Prof> map) throws IOException{
-        System.out.print("Enter the prof you'd like to see connections of: ");
-        String profName=scanner.nextLine();
-        ArrayList<String> co;
-
-        //check if the name is in the map
-        if(map.containsKey(profName)){
-            co=map.get(profName).getCoauthors();
-            
-        }else{
-            System.out.println("No prof with this name.");
-        }
-        //HERE need graph
-    }
 
     public static void main(String[] args) throws IOException {
         try (Scanner scanner = new Scanner(System.in)) {
             String data="data/all_output.csv";
             HashMap<String,Prof> map=new ProfList(data).getHashMap();
+            Graph graph=new Graph(map.keySet().size());
 
             while (true) { 
                 System.out.print("--------------------------\nEnter 1 to search Prof, 2 for Dept, 3 for graph, 0 for prof list: ");
@@ -112,7 +99,7 @@ public class UserInterface {
                 if(c.equals("0")) getMenu(scanner, map);
                 else if(c.equals("1")) getProf(scanner, map);
                 else if(c.equals("2")) getDept(scanner, map);
-                else if(c.equals("3")) getGraph(scanner, map);
+                else if(c.equals("3")) ProfGraph.getGraph(scanner, map, graph);
                 else System.out.println("Wrong input");
                 
             }

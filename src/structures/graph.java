@@ -218,6 +218,19 @@ public class Graph {
         return s.toString();
     }
 
+    public String toStringDetail(ArrayList<String> names){
+        StringBuilder s = new StringBuilder();
+        s.append(V + " vertices, " + E + " edges " + NEWLINE);
+        for (int v = 0; v < V; v++) {
+            s.append("coauthors of "+names.get(v) + ": ");
+            for (int w : adj[v]) {
+                s.append(names.get(w) + " ");
+            }
+            s.append(NEWLINE);
+        }
+        return s.toString();
+    }
+
 
     /**
      * Unit tests the {@code Graph} data type.
@@ -228,6 +241,8 @@ public class Graph {
         String s="3 \n 3 \n 0 1 \n 1 2 \n 0 2";
         Scanner scanner=new Scanner(s);
         Graph graph = new Graph(scanner);
-        System.out.println(graph);
+        ArrayList<String> names=new ArrayList<>();
+        names.add("name1");names.add("name2");names.add("name3");
+        System.out.println(graph.toStringDetail(names));
     }
 }
