@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<javadocOptions>
+  <tags>
+    <tag>
+      <name>complexity</name>
+      <head>Computational Complexity :</head>
+      <placement>a</placement>
+    </tag>
+    <tag>
+      <name>reference</name>
+      <head>Scientific Reference :</head>
+      <placement>a</placement>
+    </tag>
+  </tags>
+  <docletArtifacts>
+    <docletArtifact />
+  </docletArtifacts>
+  <tagletArtifacts>
+    <tagletArtifact />
+  </tagletArtifacts>
+  <javadocResourcesDirectory>src/main/javadoc</javadocResourcesDirectory>
+</javadocOptions>

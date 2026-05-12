@@ -22,5 +22,6 @@ public class ProfGraph {
             //System.out.println("-----------------");
         }
         System.out.println(graph.toStringDetail(profNames));
+
     }
 }
