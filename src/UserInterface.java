@@ -116,7 +116,6 @@ public class UserInterface {
                 }
                 else if(c.equals("4")) ProfGraph.getOneProfGraph(scanner, map);
                 else System.out.println("Wrong input");
-                
             }
         }
     }
