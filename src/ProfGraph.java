@@ -67,7 +67,7 @@ public class ProfGraph {
 
         // Make sure the professor exists before building the graph.
         if (!map.containsKey(profName)){
-            System.out.println("No prof with this name");
+            System.out.println("No professor in our data with this name.");
             return;
         }
 

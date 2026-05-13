@@ -47,7 +47,7 @@ public class UserInterface {
         if(map.containsKey(profName)){
             System.out.println(map.get(profName).toStringDetails());
         }else{
-            System.out.println("No prof with this name.");
+            System.out.println("No professor in our data with this name.");
         }
         //Name has to be exact match with data base, not ideal
     }
@@ -71,7 +71,7 @@ public class UserInterface {
 
         //grab all profs in the department
         ArrayList<Prof> lst=DeptFinder.getDept(deptName, map); //gives all prof in the dept
-        if(lst.isEmpty()) System.out.println("No Dept Find");
+        if(lst.isEmpty()) System.out.println("Cannot find this department.");
 
         //put profs in a BST by paper count
         // //if multiple profs have the same paper count, store them in the same list
@@ -101,11 +101,16 @@ public class UserInterface {
             String data1="data/all_output.csv";
             String data="data/all_output_with_coauthors.csv";
             HashMap<String,Prof> map=new ProfList(data).getHashMap();
-            System.out.println(map.keySet().size());
+            //System.out.println(map.keySet().size());
     
 
             while (true) { 
-                System.out.print("--------------------------\nEnter 1 to search Prof, 2 for Dept, 3 for whole graph, 4 for one prof graph, 0 for prof list: ");
+                System.out.println("--------------------------\nEnter 1 to search one professor with exact full name,");
+                System.out.println("Enter 2 for professor list under one department, in descending order of published paper number,");
+                System.out.println("Enter 3 for a graph of all professors and coauthors, ");
+                System.out.println("Enter 4 for a graph of one professor and their coauthors' connections,");
+                System.out.println("Enter 0 to see full list of professors available. ");
+                System.out.print("Enter your choice: ");
                 String c = scanner.nextLine();
                 if(c.equals("0")) getMenu(scanner, map);
                 else if(c.equals("1")) getProf(scanner, map);
@@ -115,7 +120,7 @@ public class UserInterface {
                     ProfGraph.getGraph(scanner, map, graph);
                 }
                 else if(c.equals("4")) ProfGraph.getOneProfGraph(scanner, map);
-                else System.out.println("Wrong input");
+                else System.out.println("Invalid input");
             }
         }
     }
