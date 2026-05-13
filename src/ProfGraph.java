@@ -42,6 +42,54 @@ public class ProfGraph {
             //System.out.println("-----------------");
         }
         System.out.println(graph.toStringDetail(profNames));
+    }
 
+    /**
+    * Option 4:
+    * Builds a smaller coauthor graph for one professor.
+    *
+    * The graph includes:
+    * - the professor the user typed in
+    * - that professor's coauthors
+    * - edges between any people in this smaller group if they are coauthors
+    *
+    * @param scanner reads the professor name from the user
+    * @param map the HashMap of all professors
+    * @throws IOException if output has an issue
+    */
+    public static void getOneProfGraph(Scanner scanner, HashMap<String, Prof> map) throws IOException{
+        System.out.println("Enter the professor name for the graph");
+        String profName = scanner.nextLine();
+
+        // Make sure the professor exists before building the graph.
+        if (!map.containsKey(profName)){
+            System.out.println("No prof with this name");
+            return;
+        }
+
+        ArrayList<String> profNames = new ArrayList<>();
+        profNames.add(profName);
+
+        // Add the professor's coauthors to the smaller graph.
+        for (String coauthor : map.get(profName).getCoauthors()){
+            if (map.containsKey(coauthor) && !profNames.contains(coauthor)){
+                profNames.add(coauthor);
+            }
+        }
+
+        Graph graph = new Graph(profNames.size());
+
+        // Add edges between people in this smaller group.
+        for (String author1 : profNames) {
+            ArrayList<String> co = map.get(author1).getCoauthors();
+            for (String author2 : co) {
+                if (profNames.contains(author2)) {
+                    int a1 = profNames.indexOf(author1);
+                    int a2 = profNames.indexOf(author2);
+                    graph.addEdge(a1, a2);
+                }
+            }
+        }
+        System.out.println(graph.toStringDetail(profNames));
     }
 }

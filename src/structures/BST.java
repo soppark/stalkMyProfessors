@@ -220,18 +220,11 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
     /**
-     * Returns the largest key in the symbol table less than or equal to {@code key}.
-     *
-     * @param  key the key
-     * @return the largest key in the symbol table less than or equal to {@code key}
-     * @throws NoSuchElementException if there is no such key
-     * @throws IllegalArgumentException if {@code key} is {@code null}
-     */
-    /**
      * Unit tests the {@code BST} data type.
      *
      * @param args the command-line arguments
      */
+
     public static void main(String[] args) {
     // Create a BST with String keys and Integer values
     BST<String, Integer> st = new BST<String, Integer>();

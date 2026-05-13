@@ -105,7 +105,7 @@ public class UserInterface {
     
 
             while (true) { 
-                System.out.print("--------------------------\nEnter 1 to search Prof, 2 for Dept, 3 for graph, 0 for prof list: ");
+                System.out.print("--------------------------\nEnter 1 to search Prof, 2 for Dept, 3 for whole graph, 4 for one prof graph, 0 for prof list: ");
                 String c = scanner.nextLine();
                 if(c.equals("0")) getMenu(scanner, map);
                 else if(c.equals("1")) getProf(scanner, map);
@@ -114,6 +114,7 @@ public class UserInterface {
                     Graph graph = new Graph(map.keySet().size());
                     ProfGraph.getGraph(scanner, map, graph);
                 }
+                else if(c.equals("4")) ProfGraph.getOneProfGraph(scanner, map);
                 else System.out.println("Wrong input");
                 
             }
