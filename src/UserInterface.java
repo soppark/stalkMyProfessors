@@ -93,7 +93,6 @@ public class UserInterface {
             String data="data/all_output_with_coauthors.csv";
             HashMap<String,Prof> map=new ProfList(data).getHashMap();
             System.out.println(map.keySet().size());
-            Graph graph=new Graph(map.keySet().size());
     
 
             while (true) { 
@@ -102,7 +101,10 @@ public class UserInterface {
                 if(c.equals("0")) getMenu(scanner, map);
                 else if(c.equals("1")) getProf(scanner, map);
                 else if(c.equals("2")) getDept(scanner, map);
-                else if(c.equals("3")) ProfGraph.getGraph(scanner, map, graph);
+                else if(c.equals("3")) {
+                    Graph graph = new Graph(map.keySet().size());
+                    ProfGraph.getGraph(scanner, map, graph);
+                }
                 else System.out.println("Wrong input");
                 
             }
