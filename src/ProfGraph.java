@@ -35,8 +35,9 @@ public class ProfGraph {
                 if (map.containsKey(author2)) {
                     int a1 = profNames.indexOf(author1);
                     int a2 = profNames.indexOf(author2);
-                    
-                    graph.addEdge(a1, a2);
+                    if (a1 < a2) {
+                        graph.addEdge(a1, a2);
+                    }
                 }
             }
             //System.out.println("-----------------");
@@ -86,7 +87,9 @@ public class ProfGraph {
                 if (profNames.contains(author2)) {
                     int a1 = profNames.indexOf(author1);
                     int a2 = profNames.indexOf(author2);
-                    graph.addEdge(a1, a2);
+                    if (a1 < a2) {
+                        graph.addEdge(a1, a2);
+                    }
                 }
             }
         }

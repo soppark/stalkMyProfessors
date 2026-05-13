@@ -118,8 +118,6 @@ public class UserInterface {
                 else System.out.println("Wrong input");
                 
             }
-
         }
-
     }
 }
