@@ -1,5 +1,13 @@
 import java.util.*;
 
+/**
+ * Prof represents one professor in our dataset.
+ *
+ * Each Prof object stores the professor's basic information, research
+ * interests, papers, and coauthors. Since the CSV has one row per paper,
+ * the same professor can appear multiple times. ProfList handles grouping
+ * those rows together, and this class stores the combined information.
+ */
 public class Prof implements ProfInterface{
     private String id;
     private final String name;
@@ -12,6 +20,15 @@ public class Prof implements ProfInterface{
     ArrayList<Paper> papers;
     ArrayList<String> coauthors;
 
+    /**
+     * Creates Prof object
+     *
+     * This constructor only reads the professor's basic information and
+     * academic interests. Papers are added separately by addPaper(), because
+     * a professor can have many paper rows in the CSV.
+     *
+     * @param line one row from the professor/paper CSV file
+     */
     public Prof(String line) {
         String[] parts=line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
         // for(String s:parts){
@@ -38,6 +55,14 @@ public class Prof implements ProfInterface{
     }
 
 
+    /**
+     * Adds paper from CSV file to this professor.
+     *
+     * Since each CSV row represents one paper, ProfList calls this method
+     * every time it sees another row for the same professor.
+     *
+     * @param line one row from the professor/paper CSV file
+     */
     public void addPaper(String line){
         String[] parts=line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
         String title=""; String year=""; String venue="";
@@ -99,6 +124,9 @@ public class Prof implements ProfInterface{
         return coauthors;
     }
 
+     /**
+     * Compares professors by number of papers.
+     */
     public int compareTo(Prof other) {
         return this.paperNum-other.getPaperNum();
     }
@@ -108,6 +136,9 @@ public class Prof implements ProfInterface{
         return name + " (" + dept + ") - " + papers.size() + " papers";
     }
 
+    /**
+     * Prints out basic info, interests, and all known papers.
+     */
     public String toStringDetails(){
         String out="";
         out+="Name: "+name+"\n";

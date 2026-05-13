@@ -3,24 +3,27 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- *  The {@code Bag} class represents a bag (or multiset) of
- *  generic items. It supports insertion and iterating over the
- *  items in arbitrary order.
- *  <p>
- *  This implementation uses a singly linked list with a static nested class Node.
- *  See {@link LinkedBag} for the version from the
- *  textbook that uses a non-static nested class.
- *  See {@link ResizingArrayBag} for a version that uses a resizing array.
- *  The <em>add</em>, <em>isEmpty</em>, and <em>size</em> operations
- *  take constant time. Iteration takes time proportional to the number of items.
- *  <p>
- *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ * Bag implementation:
+ * In this project, the Bag is used as a collection for storing graph adjacency lists. 
+ * Each vertex in the graph has a Bag of neighboring vertices, which lets us iterate through a professor's coauthors.
  *
- *  @author Robert Sedgewick
- *  @author Kevin Wayne
+ * A Bag stores items without caring about order. Items can be added, and the
+ * Bag can be iterated through, but it does not support removing specific items.
+ * This makes it useful for graph edges, where we only need to collect and loop
+ * through neighbors.
  *
- *  @param <Item> the generic type of each item in this bag
+ * This implementation uses a singly linked list. Adding an item takes O(1)
+ * time, and iterating through all items takes O(n) time, where n is the number
+ * of items in the Bag.
+ *
+ * Original authors:
+ * Robert Sedgewick
+ * Kevin Wayne
+ *
+ * Adapted by:
+ * Max Liu, Joshua Oyadomari-Chun, Sophie Park, and Fred Wang
+ *
+ * @param <Item> the type of item stored in the Bag
  */
 public class Bag<Item> implements Iterable<Item> {
     private Node<Item> first;    // beginning of bag
