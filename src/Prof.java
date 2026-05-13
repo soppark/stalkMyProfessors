@@ -69,7 +69,7 @@ public class Prof implements ProfInterface{
         if(parts.length>6) title=parts[6];
         if(parts.length>7) year=parts[7];
         if(parts.length>8) venue=parts[8];
-        
+
         papers.add(new Paper(title, year, venue));
         paperNum++;
 

@@ -73,15 +73,24 @@ public class UserInterface {
         ArrayList<Prof> lst=DeptFinder.getDept(deptName, map); //gives all prof in the dept
         if(lst.isEmpty()) System.out.println("No Dept Find");
 
-        //put profs in a BST by paper count to sort 
-        BST<Integer,Prof> bst=new BST<Integer,Prof>();
-        for(Prof p:lst){
-            bst.put(p.getPaperNum(),p);
+        //put profs in a BST by paper count
+        // //if multiple profs have the same paper count, store them in the same list
+        BST<Integer, ArrayList<Prof>> bst = new BST<Integer, ArrayList<Prof>>();
+        for (Prof p : lst) {
+            int key = p.getPaperNum();
+            
+            if (bst.get(key) == null) {
+                bst.put(key, new ArrayList<Prof>());
+            }
+            bst.get(key).add(p);
         }
-
-        //keep printing the max and deleting it
-        while(!bst.isEmpty()){
-            System.out.println(bst.get(bst.max()).toString());
+        
+        //print from most papers to fewest papers
+        while (!bst.isEmpty()) {
+            int max = bst.max();
+            for (Prof p : bst.get(max)) {
+                System.out.println(p.toString());
+            }
             bst.deleteMax();
         }
     }
