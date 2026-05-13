@@ -50,10 +50,10 @@ public class GraphVisualizer extends JPanel {
         // Draw professor circles and names.
         for (int i = 0; i < n; i++) {
             g.setColor(new Color(135, 180, 255));
-            g.fillOval(x[i] - 20, y[i] - 20, 40, 40);
+            g.fillOval(x[i] - 5, y[i] - 5, 10, 10);
 
             g.setColor(Color.BLACK);
-            g.drawOval(x[i] - 20, y[i] - 20, 40, 40);
+            g.drawOval(x[i] - 5, y[i] - 5, 10, 10);
             g.drawString(names.get(i), x[i] - 35, y[i] - 25);
         }
     }

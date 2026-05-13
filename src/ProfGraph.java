@@ -27,6 +27,7 @@ public class ProfGraph {
         ArrayList<String> co;
         ArrayList<String> profNames=new ArrayList<>();
         profNames.addAll(map.keySet());
+        ArrayList<int[]> edges = new ArrayList<int[]>();
 
         for(String author1:profNames){
             co=map.get(author1).getCoauthors();
@@ -37,12 +38,14 @@ public class ProfGraph {
                     int a2 = profNames.indexOf(author2);
                     if (a1 < a2) {
                         graph.addEdge(a1, a2);
+                        edges.add(new int[] {a1, a2});
                     }
                 }
             }
             //System.out.println("-----------------");
         }
         System.out.println(graph.toStringDetail(profNames));
+        GraphVisualizer.showGraph(profNames, edges);
     }
 
     /**
@@ -59,7 +62,7 @@ public class ProfGraph {
     * @throws IOException if output has an issue
     */
     public static void getOneProfGraph(Scanner scanner, HashMap<String, Prof> map) throws IOException{
-        System.out.println("Enter the professor name for the graph");
+        System.out.print("Enter the professor name for the graph: ");
         String profName = scanner.nextLine();
 
         // Make sure the professor exists before building the graph.
