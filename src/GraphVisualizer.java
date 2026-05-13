@@ -2,6 +2,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * GraphVisualizer opens a simple Swing window and draws a graph.
+ *
+ * Each professor is shown as a blue circle.
+ * Each coauthor relationship is shown as a gray line.
+ */
 public class GraphVisualizer extends JPanel {
     private ArrayList<String> names;
     private ArrayList<int[]> edges;
@@ -17,56 +23,49 @@ public class GraphVisualizer extends JPanel {
 
         int width = getWidth();
         int height = getHeight();
+
         int centerX = width / 2;
         int centerY = height / 2;
-        int radius = Math.min(width, height) / 3;
+        int circleRadius = Math.min(width, height) / 3;
 
         int n = names.size();
         int[] x = new int[n];
         int[] y = new int[n];
 
+        // Put the professors around a circle.
         for (int i = 0; i < n; i++) {
             double angle = 2 * Math.PI * i / n;
-            x[i] = centerX + (int) (radius * Math.cos(angle));
-            y[i] = centerY + (int) (radius * Math.sin(angle));
+            x[i] = centerX + (int)(circleRadius * Math.cos(angle));
+            y[i] = centerY + (int)(circleRadius * Math.sin(angle));
         }
 
+        // Draw coauthor lines first so circles appear on top.
         g.setColor(Color.GRAY);
         for (int[] edge : edges) {
-            int from = edge[0];
-            int to = edge[1];
-            g.drawLine(x[from], y[from], x[to], y[to]);
+            int a = edge[0];
+            int b = edge[1];
+            g.drawLine(x[a], y[a], x[b], y[b]);
         }
 
+        // Draw professor circles and names.
         for (int i = 0; i < n; i++) {
             g.setColor(new Color(135, 180, 255));
             g.fillOval(x[i] - 20, y[i] - 20, 40, 40);
 
             g.setColor(Color.BLACK);
             g.drawOval(x[i] - 20, y[i] - 20, 40, 40);
-            g.drawString(names.get(i), x[i] - 25, y[i] - 25);
+            g.drawString(names.get(i), x[i] - 35, y[i] - 25);
         }
     }
 
-    public static void main(String[] args) {
-        ArrayList<String> names = new ArrayList<>();
-        names.add("Alice");
-        names.add("Bob");
-        names.add("Carol");
-        names.add("David");
-        names.add("Eva");
-
-        ArrayList<int[]> edges = new ArrayList<>();
-        edges.add(new int[] {0, 1});
-        edges.add(new int[] {0, 2});
-        edges.add(new int[] {1, 3});
-        edges.add(new int[] {2, 3});
-        edges.add(new int[] {2, 4});
-
-        JFrame frame = new JFrame("Coauthor Graph");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    /**
+     * Opens the graph window.
+     */
+    public static void showGraph(ArrayList<String> names, ArrayList<int[]> edges) {
+        JFrame frame = new JFrame("Professor Coauthor Graph");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.add(new GraphVisualizer(names, edges));
-        frame.setSize(700, 700);
+        frame.setSize(800, 800);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }

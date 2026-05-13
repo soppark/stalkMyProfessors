@@ -78,7 +78,8 @@ public class ProfGraph {
             }
         }
 
-        Graph graph = new Graph(profNames.size());
+       Graph graph = new Graph(profNames.size());
+       ArrayList<int[]> edges = new ArrayList<int[]>();
 
         // Add edges between people in this smaller group.
         for (String author1 : profNames) {
@@ -89,10 +90,12 @@ public class ProfGraph {
                     int a2 = profNames.indexOf(author2);
                     if (a1 < a2) {
                         graph.addEdge(a1, a2);
+                        edges.add(new int[] {a1, a2});
                     }
                 }
             }
         }
         System.out.println(graph.toStringDetail(profNames));
+        GraphVisualizer.showGraph(profNames, edges);
     }
 }
