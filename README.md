@@ -51,6 +51,7 @@ Enter 4 for a graph of one professor and their coauthors' connections,
 Enter 0 to see full list of professors available. 
 Enter your choice: 3
 ~~~
+![](figures/feature3Example.png)
 ### Professor Coauthor Graph by Name
 Entering '4' prompts the user for the name of the professor (e.g. 'Shahriar Shahriari'), which will then open a window that displays a graph where the node furthest to the right is the targeted professor and every other node is a professor they have coauthored a paper with. Edges between each node represents the papers each professor has coauthored with another.
 ~~~text
@@ -62,6 +63,7 @@ Enter 4 for a graph of one professor and their coauthors' connections,
 Enter 0 to see full list of professors available. 
 Enter your choice: 4
 ~~~
+![](figures/feature4Example.png)
 ### Exit
 Entering '5' or 'Exit' closes the program.
 ~~~text
