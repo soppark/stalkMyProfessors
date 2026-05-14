@@ -69,4 +69,14 @@ public class GraphVisualizer extends JPanel {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
+
+    // For testing
+    // public static void main(String[] args) {
+    //     ArrayList<int[]> newEdges = new ArrayList<int[]>();
+    //     newEdges.add(new int[]{0, 1});
+    //     ArrayList<String> newNodes = new ArrayList<String>();
+    //     newNodes.add("a");
+    //     newNodes.add("b");
+    //     GraphVisualizer.showGraph(newNodes, newEdges);
+    // }
 }

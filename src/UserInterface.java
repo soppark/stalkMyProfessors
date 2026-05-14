@@ -125,4 +125,15 @@ public class UserInterface {
             }
         }
     }
+
+    // For testing
+    // public static void main(String[] args) throws IOException {
+    //     ProfList newProfList = new ProfList("data/all_output_with_coauthors.csv");
+    //     try {
+    //         ProfGraph.getOneProfGraph(new Scanner(System.in), newProfList.getHashMap());
+    //     } catch (IOException e) {
+    //         // TODO Auto-generated catch block
+    //         e.printStackTrace();
+    //     }
+    // }
 }

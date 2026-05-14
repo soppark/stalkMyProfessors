@@ -157,4 +157,22 @@ public class Prof implements ProfInterface{
         }
         return out;
     }
+
+    // Testing
+    // public static void main(String[] args) {
+    //     // Creates new Prof object and logs the paper included in the line
+    //     Prof newProf = new Prof("Jingyi Li,\"Assistant Professor of Computer Science, Pomona College\",Computer Science,@pomona.edu,http://jingyi.me/,human-computer interaction,Trusting virtual agents: The effect of personality,2019,\"ACM Transactions on Interactive Intelligent Systems (TiiS) 9 (2-3), 1-36, 2019\"");
+
+    //     // Adds new paper to Prof object's list of papers
+    //     newProf.addPaper("Jingyi Li,\"Assistant Professor of Computer Science, Pomona College\",Computer Science,@pomona.edu,http://jingyi.me/,human-computer interaction,Makers' marks: Physical markup for designing and fabricating functional objects,2015,\"Proceedings of the 28th Annual ACM Symposium on User Interface Software …, 2015\"");
+
+    //     // Returns "Jingyi Li"
+    //     System.out.println(newProf.toStringDetails());
+
+    //     // Returns "Computer Science"
+    //     System.out.println(newProf.getPaperNum());
+
+    //     // returns
+    //     System.out.println(newProf.getCoauthors());
+    // }
 }
