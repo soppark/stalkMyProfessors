@@ -67,6 +67,95 @@ Enter the professor name for the graph: Shahriar Shahriari
 ![](figures/feature4Example1.png)
 ### Exit
 Entering '5' or 'Exit' closes the program.
+~~~text
+--------------------------
+Enter 1 to search one professor with exact full name,
+Enter 2 for professor list under one department, in descending order of published paper number,
+Enter 3 for a graph of all professors and coauthors, 
+Enter 4 for a graph of one professor and their coauthors' connections,
+Enter 0 to see full list of professors available. 
+Enter your choice: Exit
+~~~
+## Public Methods and Constructors
+~~~java
+// Creates new Prof object and logs the paper included in the line
+Prof newProf = new Prof("Jingyi Li,"Assistant Professor of Computer Science, Pomona College",Computer Science,@pomona.edu,http://jingyi.me/,human-computer interaction,Trusting virtual agents: The effect of personality,2019,"ACM Transactions on Interactive Intelligent Systems (TiiS) 9 (2-3), 1-36, 2019"
+");
+
+// Adds new paper to Prof object's list of papers
+newProf.addPaper("Jingyi Li,"Assistant Professor of Computer Science, Pomona College",Computer Science,@pomona.edu,http://jingyi.me/,human-computer interaction,Makers' marks: Physical markup for designing and fabricating functional objects,2015,"Proceedings of the 28th Annual ACM Symposium on User Interface Software …, 2015"");
+
+// Returns "Jingyi Li"
+newProf.getName();
+
+// Returns "Computer Science"
+newProf.getDepartment();
+
+// Returns null
+newProf.getID();
+
+// Returns "Assistant Professor of Computer Science, Pomona College"
+newProf.getAffiliation();
+
+// Returns "@pomona.edu"
+newProf.getEmail();
+
+// Returns "http://jingyi.me/"
+newProf.getWebsite();
+
+// Returns list: [human-computer interaction]
+newProf.getAcademicInterests();
+
+// Returns list: [Title: Makers' marks: Physical markup for designing and fabricating functional objects, Year: 2015, Venue: "Proceedings of the 28th Annual ACM Symposium on User Interface Software ?, 2015"]
+newProf.getPapers();
+
+// Returns 1
+newProf.getPaperNum();
+
+// Returns empty list: []
+newProf.getCoauthors();
+
+// Returns 0 because both have the same number of papers
+newProf.compareTo(newProf);
+
+// Returns "Jingyi Li (Computer Science) - 1 papers"
+newProf.toString();
+
+// Returns "human-computer interaction\n---------------\n1 Past Papers Found: \nTitle: Makers' marks: Physical markup for designing and fabricating functional objects, Year: 2015, Venue: "Proceedings of the 28th Annual ACM Symposium on User Interface Software ?, 2015"
+newProf.toStringDetails();
+
+// Creates new ProfList object loaded with the data from the all_output_with_coauthors csv file
+ProfList newProfList = new ProfList("data/all_output_with_coauthors.csv");
+
+// Returns the hashMap, where the key is their name and the value is their Prof object
+newProfList.getHashMap();
+
+// Returns the string form of every professor in the all_output_with_coauthors csv
+newProfList.toString();
+
+// Creates a new Paper object
+Paper newPaper = new Paper("Very good research", "2026", "Good research monthly);
+
+// Returns "Title: Very good research, Year: 2026, Venue: Good research monthly"
+newPaper.toString();
+
+// Returns all the Prof objects of professors in the all_output_with_coauthors csv file that have the key "Computer Science"
+DeptFinder.getDept("Computer Science", newProfList.getHashMap());
+
+// Creates a window that displayes a graph with two nodes a and b with one edge between them
+ArrayList<int[]> newEdges = new ArrayList<int[]>();
+newEdges.add(new int[]{0, 1});
+ArrayList<String> newNodes = new ArrayList<String>();
+newNodes.add("a");
+newNodes.add("b");
+GraphVisualizer.showGraph(newNodes, newEdges);
+
+// Displays graph of all professors in the all_output_with_coauthors csv file
+ProfGraph.getGraph(new Scanner(System.in), newProfList.getHashMap(), new Graph(newProfList.getHashMap().keySet().size()));
+
+// Prompts user for name of a professor from the all_output_with_coauthors csv file and then displays a graph of all of their previoud coauthours and their interractions with each other
+rofGraph.getOneProfGraph(new Scanner(System.in), newProfList.getHashMap());
+~~~
 # Credits
 
 Built by Max Liu, Joshua Oyadomari-Chun, Sophie Park, and Fred Wang. | CS62 Final Project, Spring 2026
