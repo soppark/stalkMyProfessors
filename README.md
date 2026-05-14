@@ -103,11 +103,55 @@ newProf.getEmail();
 // Returns "http://jingyi.me/"
 newProf.getWebsite();
 
-// Returns list [human-computer interaction]
+// Returns list: [human-computer interaction]
 newProf.getAcademicInterests();
 
-// Returns all the Prof objects in the hashmap that have key "Computer Science"
-DeptFinder.getDept("Computer Science", map);
+// Returns list: [Title: Makers' marks: Physical markup for designing and fabricating functional objects, Year: 2015, Venue: "Proceedings of the 28th Annual ACM Symposium on User Interface Software ?, 2015"]
+newProf.getPapers();
+
+// Returns 1
+newProf.getPaperNum();
+
+// Returns empty list: []
+newProf.getCoauthors();
+
+// Returns 0 because both have the same number of papers
+newProf.compareTo(newProf);
+
+// Returns "Jingyi Li (Computer Science) - 1 papers"
+newProf.toString();
+
+// Returns "human-computer interaction\n---------------\n1 Past Papers Found: \nTitle: Makers' marks: Physical markup for designing and fabricating functional objects, Year: 2015, Venue: "Proceedings of the 28th Annual ACM Symposium on User Interface Software ?, 2015"
+newProf.toStringDetails();
+
+// Creates new ProfList object loaded with the data from the all_output_with_coauthors csv file
+ProfList newProfList = new ProfList("data/all_output_with_coauthors.csv");
+
+// Returns the hashMap, where the key is their name and the value is their Prof object
+newProfList.getHashMap();
+
+// Returns the string form of every professor in the all_output_with_coauthors csv
+newProfList.toString();
+
+// Creates a new Paper object
+Paper newPaper = new Paper("Very good research", "2026", "Good research monthly);
+
+// Returns "Title: Very good research, Year: 2026, Venue: Good research monthly"
+newPaper.toString();
+
+// Returns all the Prof objects of professors in the all_output_with_coauthors csv file that have the key "Computer Science"
+DeptFinder.getDept("Computer Science", newProfList.getHashMap());
+
+// Creates a window that displayes a graph with two nodes a and b with one edge between them
+ArrayList<int[]> newEdges = new ArrayList<int[]>();
+newEdges.add(new int[]{0, 1});
+ArrayList<String> newNodes = new ArrayList<String>();
+newNodes.add("a");
+newNodes.add("b");
+GraphVisualizer.showGraph(newNodes, newEdges);
+
+// Displays graph of
+ProfGraph.getGraph(new Scanner(System.in), newProfList.getHashMap(), new Graph(newProfList.getHashMap().keySet().size()));
 ~~~
 # Credits
 
