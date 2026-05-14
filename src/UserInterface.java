@@ -120,6 +120,7 @@ public class UserInterface {
                     ProfGraph.getGraph(scanner, map, graph);
                 }
                 else if(c.equals("4")) ProfGraph.getOneProfGraph(scanner, map);
+                else if(c.equals("5") || c.equals("Exit")) return;
                 else System.out.println("Invalid input");
             }
         }
