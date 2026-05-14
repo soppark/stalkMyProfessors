@@ -73,10 +73,6 @@ Enter 4 for a graph of one professor and their coauthors' connections,
 Enter 0 to see full list of professors available. 
 Enter your choice: Exit
 ~~~
-## Usage
-```java
-//Hola
-```
 # Credits
 
 Built by Max Liu, Joshua Oyadomari-Chun, Sophie Park, and Fred Wang. | CS62 Final Project, Spring 2026
