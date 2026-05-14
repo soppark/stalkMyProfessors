@@ -64,9 +64,7 @@ Enter 0 to see full list of professors available.
 Enter your choice: 4
 Enter the professor name for the graph: Shahriar Shahriari
 ~~~
-![](figures/feature4Example.png)
-![](figures/feature4Example.png)
-
+![](figures/feature4Example1.png)
 ### Exit
 Entering '5' or 'Exit' closes the program.
 ~~~text
