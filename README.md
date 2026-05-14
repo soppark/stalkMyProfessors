@@ -154,7 +154,7 @@ GraphVisualizer.showGraph(newNodes, newEdges);
 ProfGraph.getGraph(new Scanner(System.in), newProfList.getHashMap(), new Graph(newProfList.getHashMap().keySet().size()));
 
 // Prompts user for name of a professor from the all_output_with_coauthors csv file and then displays a graph of all of their previoud coauthours and their interractions with each other
-rofGraph.getOneProfGraph(new Scanner(System.in), newProfList.getHashMap());
+ProfGraph.getOneProfGraph(new Scanner(System.in), newProfList.getHashMap());
 ~~~
 # Credits
 
