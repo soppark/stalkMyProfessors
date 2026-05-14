@@ -6,18 +6,17 @@ Run the main() method on the UserInterface.java file for a terminal interface. R
 
 # Features
 ### Help
-Entering '0' returns a list of professors along with their name, department, and number of papers. This is to allow for easy copying and spell checking of professor and/or department names.
+- Entering '0' returns a list of professors along with their name, department, and number of papers. This is to allow for easy copying and spell checking of professor and/or department names.
 ### Professor search by name
-Entering '1' prompts the user to type the name of the professor (e.g. 'Shahriar Shahriari'), which will then return the professor's name, title, department, email, personal website, interests, and a list of all all the papers they have created.
+- Entering '1' prompts the user to type the name of the professor (e.g. 'Shahriar Shahriari'), which will then return the professor's name, title, department, email, personal website, interests, and a list of all all the papers they have created.
 ### Professor Search Department List
-Entering '2' prompts the user to type the name of the department to sort by (e.g. 'Computer Science'), which will return a list of every professor in the department along with the number of papers each professor has written.
+- Entering '2' prompts the user to type the name of the department to sort by (e.g. 'Computer Science'), which will return a list of every professor in the department along with the number of papers each professor has written.
 ### Professor Coauthor Graph
-Entering '3' opens a window that displays a graph where each node is a professor and each edge represents a paper coauthored by both professors.
+- Entering '3' opens a window that displays a graph where each node is a professor and each edge represents a paper coauthored by both professors.
 ### Professor Coauthor Graph by Name
-Entering '4' prompts the user for the name of the professor (e.g. 'Shahriar Shahriari'), which will then open a window that displays a graph where the node furthest to the right is the targeted professor and every other node is a professor they have coauthored a paper with. Edges between each node represents the papers each professor has coauthored with another.
+- Entering '4' prompts the user for the name of the professor (e.g. 'Shahriar Shahriari'), which will then open a window that displays a graph where the node furthest to the right is the targeted professor and every other node is a professor they have coauthored a paper with. Edges between each node represents the papers each professor has coauthored with another.
 ### Exit
-Entering '5' or 'Exit' closes the program.
+- Entering '5' or 'Exit' closes the program.
 # Credits
 
-Built by Max Liu, Joshua Oyadomari-Chun, Sophie Park, and Fred Wang
-CS62 Final Project, Spring 2026
+Built by Max Liu, Joshua Oyadomari-Chun, Sophie Park, and Fred Wang. | CS62 Final Project, Spring 2026
