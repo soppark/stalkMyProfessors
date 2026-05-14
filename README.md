@@ -64,7 +64,7 @@ Enter 0 to see full list of professors available.
 Enter your choice: 4
 Enter the professor name for the graph: Shahriar Shahriari
 ~~~
-![](figures/feature4Example.png)
+![](figures/feature4Example.png) .
 ### Exit
 Entering '5' or 'Exit' closes the program.
 ~~~text
@@ -150,8 +150,11 @@ newNodes.add("a");
 newNodes.add("b");
 GraphVisualizer.showGraph(newNodes, newEdges);
 
-// Displays graph of
+// Displays graph of all professors in the all_output_with_coauthors csv file
 ProfGraph.getGraph(new Scanner(System.in), newProfList.getHashMap(), new Graph(newProfList.getHashMap().keySet().size()));
+
+// Prompts user for name of a professor from the all_output_with_coauthors csv file and then displays a graph of all of their previoud coauthours and their interractions with each other
+rofGraph.getOneProfGraph(new Scanner(System.in), newProfList.getHashMap());
 ~~~
 # Credits
 
